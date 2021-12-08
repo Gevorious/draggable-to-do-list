@@ -1,0 +1,75 @@
+.todo {
+  width: 100%;
+  @include flex-container(row, center, flex-start);
+  &-column {
+    &-wrapper {
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+      h2 {
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      width: 33%;
+      &.backlog {
+        color: tomato;
+        .todo-item {
+          background-color: tomato;
+        }
+      }
+      &.in_progress {
+        color: orange;
+        .todo-item {
+          background-color: orange;
+        }
+      }
+      &.done {
+        color: green;
+        .todo-item {
+          background-color: green;
+        }
+      }
+    }
+    padding: 0.5rem;
+    min-height: 70vh;
+    box-shadow: 0px 0px 10px -4px rgba(0, 0, 0, 0.7);
+    background-color: $secondary-cyan;
+  }
+  &-item {
+    @include flex-container(row, space-between, center);
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px -2px rgba(0, 0, 0, 0.9);
+    padding: 0 5px;
+    color: white;
+    user-select: none;
+    margin-bottom: 2px;
+
+    h3 {
+      margin: 0.5rem 0.5rem 0.2rem;
+    }
+    p {
+      padding: 0 15px 5px;
+      user-select: none;
+      font-style: italic;
+      font-size: 0.7rem;
+      opacity: 0.8;
+      margin-top: 0;
+    }
+
+    .delete-btn {
+      display: none;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+    &:hover {
+      .delete-btn {
+        display: flex;
+      }
+    }
+  }
+}

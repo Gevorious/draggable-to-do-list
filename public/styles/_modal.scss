@@ -1,0 +1,56 @@
+.modal {
+  position: absolute;
+  @include flex-container(column, center, flex-start);
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  color: $primary-cyan;
+  width: 25%;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  z-index: 2;
+  box-shadow: 0 0 10px -4px rgba(0, 0, 0, 0.9);
+  form {
+    width: 100%;
+    .mb-3 {
+      @include flex-container(column, space-between, flex-start);
+      position: relative;
+      .form-control {
+        width: 100%;
+        margin-bottom: 2rem;
+        font-size: 1rem;
+        padding: 2px;
+        outline: none;
+        resize: none;
+      }
+
+      textarea.form-control {
+        height: 5rem;
+      }
+      .invalid-feedback {
+        position: absolute;
+        font-size: 0.7rem;
+        font-style: italic;
+        color: tomato;
+        left: 0;
+        bottom: 1rem;
+      }
+    }
+    button {
+      background-color: $secondary-cyan;
+      color: #000;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.3s ease-out;
+      &:hover {
+        background-color: $primary-cyan;
+        color: #fff;
+      }
+    }
+  }
+}

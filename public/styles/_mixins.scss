@@ -1,0 +1,23 @@
+@mixin centered-flex($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+@mixin flex-container($direction, $justify, $align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+@mixin control-btn($url, $size) {
+  width: $size;
+  height: $size;
+  opacity: 0.6;
+  cursor: pointer;
+  background: url($url) no-repeat center center;
+  &:hover {
+    opacity: 1;
+  }
+}

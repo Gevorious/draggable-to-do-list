@@ -1,0 +1,4 @@
+.control-bar {
+  @include flex-container(row, space-between, center);
+  margin: 2rem 0 0.5rem;
+}

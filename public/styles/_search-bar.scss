@@ -1,0 +1,17 @@
+.search-bar {
+  width: 40%;
+  display: flex;
+  input {
+    outline: none;
+    border: none;
+    width: 100%;
+    font-size: $font-middle;
+    border-bottom: 1px solid $primary-gray;
+    padding: 5px 10px 3px;
+  }
+  .search-btn {
+    width: calc(1rem + 6px);
+    border-bottom: 1px solid $primary-gray;
+    background: white url("../img/icons/search.svg") no-repeat center center;
+  }
+}
