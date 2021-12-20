@@ -60,14 +60,24 @@
       margin-top: 0;
     }
 
-    .delete-btn {
+    .delete-btn,
+    .edit-btn {
       display: none;
       position: absolute;
-      top: 5px;
-      right: 5px;
+      right: 3px;
     }
+
+    .delete-btn {
+      top: 5px;
+    }
+
+    .edit-btn {
+      top: 30px;
+    }
+
     &:hover {
-      .delete-btn {
+      .delete-btn,
+      .edit-btn {
         display: flex;
       }
     }

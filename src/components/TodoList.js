@@ -14,6 +14,7 @@ const TodoList = () => {
   const [todoData, setTodoData] = useState(DUMMY_DATA);
   const [term, setTerm] = useState("");
   const [modalState, setModalState] = useState(false);
+  const [editItem, seteditItem] = useState(null);
 
   const COLUMNS = [
     { id: "backlog", title: "backlog" },
@@ -26,6 +27,7 @@ const TodoList = () => {
   };
 
   const addTodo = (event, values) => {
+    console.log("AddTodo");
     const newData = JSON.parse(JSON.stringify(todoData));
     const newItem = { ...values, id: uuidv4() };
     newData.backlog.push(newItem);
@@ -37,6 +39,29 @@ const TodoList = () => {
     const newData = JSON.parse(JSON.stringify(todoData));
     newData[col] = newData[col].filter((item) => item.id !== id);
     setTodoData(newData);
+  };
+
+  const editItemSubmitHandler = (values, colId, id) => {
+    console.log("editItemSubmitHandler");
+    const newData = JSON.parse(JSON.stringify(todoData));
+    newData[colId].find((item) => item.id === id).title = values.title;
+    newData[colId].find((item) => item.id === id).desc = values.desc;
+
+    setTodoData(newData);
+    seteditItem(null);
+    setModalState(false);
+  };
+
+  const handleEdit = (colId, id) => {
+    const newData = JSON.parse(JSON.stringify(todoData));
+    setModalState(true);
+    const editItemProps = {
+      ...newData[colId].find((item) => item.id === id),
+      handler: editItemSubmitHandler,
+      colId,
+      id,
+    };
+    seteditItem(editItemProps);
   };
 
   const handleDragEnd = (result) => {
@@ -78,7 +103,11 @@ const TodoList = () => {
       {modalState && (
         <Modal
           validSubmitHandler={addTodo}
-          closeModal={() => setModalState(false)}
+          editItem={editItem}
+          closeModal={() => {
+            setModalState(false);
+            seteditItem(null);
+          }}
         />
       )}
       <div className="content-wrapper">
@@ -94,6 +123,7 @@ const TodoList = () => {
               <TodoColumn
                 key={col.id}
                 onDelete={handleDelete}
+                onEdit={handleEdit}
                 title={col.title}
                 id={col.id}
                 data={visibleItems[col.id]}

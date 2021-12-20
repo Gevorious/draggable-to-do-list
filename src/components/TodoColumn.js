@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 import { Droppable } from "react-beautiful-dnd";
-const TodoColumn = ({ title, data, id, onDelete }) => {
+const TodoColumn = ({ title, data, id, onDelete, onEdit }) => {
   return (
     <div className={`todo-column-wrapper ${id}`}>
       <h2>{title}</h2>
@@ -14,6 +14,7 @@ const TodoColumn = ({ title, data, id, onDelete }) => {
             {data.map((todo, idx) => (
               <TodoItem
                 onDelete={onDelete}
+                onEdit={onEdit}
                 key={todo.id}
                 index={idx}
                 todo={todo}

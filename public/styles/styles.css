@@ -10,6 +10,17 @@
   opacity: 1;
 }
 
+.edit-btn {
+  width: 20px;
+  height: 20px;
+  opacity: 0.6;
+  cursor: pointer;
+  background: url("../img/icons/edit.svg") no-repeat center center;
+}
+.edit-btn:hover {
+  opacity: 1;
+}
+
 .add-button {
   width: 30px;
   height: 30px;
@@ -237,12 +248,19 @@ body {
   opacity: 0.8;
   margin-top: 0;
 }
-.todo-item .delete-btn {
+.todo-item .delete-btn,
+.todo-item .edit-btn {
   display: none;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  right: 3px;
 }
-.todo-item:hover .delete-btn {
+.todo-item .delete-btn {
+  top: 5px;
+}
+.todo-item .edit-btn {
+  top: 30px;
+}
+.todo-item:hover .delete-btn,
+.todo-item:hover .edit-btn {
   display: flex;
 }/*# sourceMappingURL=styles.css.map */

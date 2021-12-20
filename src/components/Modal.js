@@ -1,13 +1,22 @@
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import { Button } from "reactstrap";
 
-const Modal = ({ validSubmitHandler, closeModal }) => {
+const Modal = ({ validSubmitHandler, closeModal, editItem }) => {
+  const model = editItem ? { title: editItem.title, desc: editItem.desc } : {};
   return (
     <>
       <div className="backdrop" onClick={closeModal}></div>
       <div className="modal">
-        <h3>Add New Task</h3>
-        <AvForm onValidSubmit={validSubmitHandler}>
+        <h3>{editItem ? "Edit" : "Add New Task"}</h3>
+        <AvForm
+          onValidSubmit={
+            editItem
+              ? (e, values) =>
+                  editItem.handler(values, editItem.colId, editItem.id)
+              : validSubmitHandler
+          }
+          model={model}
+        >
           <AvField
             name="title"
             label="Title*"
@@ -33,7 +42,7 @@ const Modal = ({ validSubmitHandler, closeModal }) => {
               },
             }}
           />
-          <Button color="primary">ADD</Button>
+          <Button color="primary">{editItem ? "EDIT" : "ADD"}</Button>
         </AvForm>
       </div>
     </>

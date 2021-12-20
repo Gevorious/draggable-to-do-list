@@ -1,6 +1,9 @@
 .delete-btn {
   @include control-btn("../img/icons/delete.svg", 20px);
 }
+.edit-btn {
+  @include control-btn("../img/icons/edit.svg", 20px);
+}
 
 .add-button {
   @include control-btn("../img/icons/add.svg", 30px);
