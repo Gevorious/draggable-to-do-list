@@ -11,4 +11,5 @@ A React-based todo list application with drag and drop functionality.
 
 1. Clone the repository
 2. change node version with nvm to 14.X.X
-3> install packages(npm install)
+3. install packages(npm install)
+4. Start the project (npm start)
